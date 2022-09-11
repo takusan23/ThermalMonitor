@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
 /**
- * 発熱状態を取得できるAPIを叩く
+ * 発熱状態を取得できるコールバックを購読するサービス
  */
 class ThermalMonitorService : Service() {
 
@@ -72,7 +72,7 @@ class ThermalMonitorService : Service() {
             setSmallIcon(R.drawable.ic_outline_thermostat_24)
             addAction(R.drawable.ic_outline_thermostat_24, "終了", stopServicePendingIntent)
         }.build()
-        notificationManager.notify(NOTIFICATION_ID, notification)
+        startForeground(NOTIFICATION_ID, notification)
     }
 
     private fun registerNotificationChannel() {
